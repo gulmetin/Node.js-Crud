@@ -4,9 +4,11 @@ const app = express();
 
 app.use('/hello',(request, response, next) => {
     console.log("Middleware working, a new request has arrived");
-    if(request.method=='POST'){
-        console.log("Request sent for post request.");
-    }
+    next();
+});
+
+app.post('/hello',(request, response, next) => {
+    console.log("Middleware working, Request sent for post request.");
     next();
 });
 
